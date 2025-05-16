@@ -19,7 +19,10 @@ public class Server {
 		ServerSocket serverSocket = new ServerSocket();
 		
 		//바인드
-		serverSocket.bind(new InetSocketAddress("192.0.0.2", 10001));
+		//mac --> 집 wifi 연결 시 IP주소 172.30.1.98
+		//mac --> 핫스팟 연결 시 IP주소 192.0.0.2
+		//window --> 학원 컴퓨터 IP주소 192.168.0.27
+		serverSocket.bind(new InetSocketAddress("172.30.1.98", 10001));
 	
 		//서버 시작
 		System.out.println("<서버 시작>");
@@ -41,16 +44,22 @@ public class Server {
 		BufferedWriter bw = new BufferedWriter(osw);
 		
 		//반복
-		//메시지 받기
-		String msg = br.readLine();
-		
-		System.out.println("받은메세지: " + msg);
-		
-		//메시지 보내기
-		bw.write(msg);
-		bw.newLine();
-		bw.flush();
-		
+		while(true) {
+			
+			//메시지 받기
+			String msg = br.readLine();
+			
+			if(msg == null) {
+				break;
+			}
+			
+			System.out.println("받은메세지: " + msg);
+			
+			//메시지 보내기
+			bw.write(msg);
+			bw.newLine();
+			bw.flush();
+		}
 		
 		//서버 종료
 		System.out.println("==========================");

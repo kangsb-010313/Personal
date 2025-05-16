@@ -24,7 +24,7 @@ public class Client {
 		
 		//서버에 연결 요청
 		System.out.println("[서버에 연결을 요청합니다.]");
-		socket.connect(new InetSocketAddress("192.0.0.2", 10001));
+		socket.connect(new InetSocketAddress("172.30.1.98", 10001));
 		
 		//쓰기 스트림 준비
 		OutputStream out = socket.getOutputStream();
@@ -40,17 +40,28 @@ public class Client {
 		Scanner sc = new Scanner(System.in);
 		
 		//반복
-		//메세지 키보드로 입력받기
-		String msg = sc.nextLine();
-		
-		//메세지 보내기
-		bw.write(msg);
-		bw.newLine();
-		bw.flush();
-		
-		//메세지 받기
-		String reMsg = br.readLine();
-		System.out.println("server:[" + reMsg + "]");
+		while(true) {
+			
+			//메세지 키보드로 입력받기
+			String msg = sc.nextLine();
+			
+			if("/q".equals(msg)) {
+				break;
+			}
+			
+			//메세지 보내기
+			bw.write(msg);
+			bw.newLine();
+			bw.flush();
+			
+			//메세지 받기
+			String reMsg = br.readLine();
+			System.out.println("server:[" + reMsg + "]");
+			
+			
+		}
+
+	
 		
 		//클라이언트 종료
 		System.out.println("================================");
