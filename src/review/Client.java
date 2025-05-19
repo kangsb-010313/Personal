@@ -23,7 +23,7 @@ public class Client {
 		
 		//서버에 연결 요청
 		System.out.println("[서버에 연결을 요청합니다.]");
-		socket.connect(new InetSocketAddress("192.168.1.42", 10001));
+		socket.connect(new InetSocketAddress("192.0.0.2", 10001));
 		
 		//쓰기 스트림 준비
 		OutputStream out = socket.getOutputStream();

@@ -14,7 +14,8 @@ public class Server {
 		
 		//바인드
 		//mac으로 학원 wifi 접속 시 ip 주소 --> 192.168.1.42
-		serverSocket.bind(new InetSocketAddress("192.168.1.42", 10001));
+		//mac 192.0.0.2
+		serverSocket.bind(new InetSocketAddress("192.0.0.2", 10001));
 		
 		//서버 시작
 		System.out.println("<서버 시작>");
